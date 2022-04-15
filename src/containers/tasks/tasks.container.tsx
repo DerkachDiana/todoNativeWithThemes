@@ -1,17 +1,19 @@
-import React, {useState} from 'react';
-import {TasksComponent} from './tasks.component';
-import {TaskType} from '../../types/Task';
+import React, { useState } from 'react';
+import { TasksComponent } from './tasks.component';
+import { TaskType } from '../../types/Task';
 
 export const TasksContainer = () => {
-  const [tasks, setTasks] = useState<TaskType[]>([]);
-  const [task, setTask] = useState<TaskType>();
+  const [ tasks, setTasks ] = useState<TaskType[]>([]);
+  const [ task, setTask ] = useState<TaskType>();
+
   const onClickAddButton = () => {
     const newTask: TaskType = {
       _id: Date.now().toString(),
       text: task?.text as string,
       isChecked: false,
     };
-    setTasks([...tasks, newTask]);
+    setTasks([ ...tasks, newTask ]);
+    setTask( { _id: '', text: '', isChecked: false });
   };
   const inputTextHandler = (text: string) => {
     setTask({
@@ -33,11 +35,12 @@ export const TasksContainer = () => {
 
   return (
     <TasksComponent
-      onClickAddButton={onClickAddButton}
-      inputTextHandler={inputTextHandler}
+      onClickAddButton={ onClickAddButton }
+      inputTextHandler={ inputTextHandler }
       tasks={tasks}
-      checkboxHandler={checkboxHandler}
-      deleteTask={deleteTask}
+      checkboxHandler={ checkboxHandler }
+      deleteTask={ deleteTask }
+      text={task?.text as string}
     />
   );
 };

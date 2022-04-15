@@ -1,12 +1,12 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 interface InfoBoxProps {
   title: string;
   description: string;
 }
 
-export const InfoBox = ({title, description}: InfoBoxProps) => {
+export const InfoBox = ({ title, description }: InfoBoxProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>

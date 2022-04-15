@@ -1,21 +1,34 @@
 import React from 'react';
-import {Image, StyleSheet, TextInput, View} from 'react-native';
+import { Image, StyleSheet, TextInput, View } from 'react-native';
 
 interface LoginInputProps {
   image: string;
+  textHandler: (text: string) => void;
+  redBorder: boolean;
 }
-export const LoginInput = ({image}: LoginInputProps) => {
+export const LoginInput = ({
+  image,
+  textHandler,
+  redBorder,
+}: LoginInputProps) => {
   const images = {
     user: require('../../../assets/icons/user.png'),
     lock: require('../../../assets/icons/lock.png'),
   };
   return (
-    <View style={styles.container}>
+    <View
+      style={
+        redBorder ? [ styles.container, styles.redBorder ] : styles.container
+      }>
       <Image
         source={image === 'Username' ? images.user : images.lock}
         style={styles.userIcon}
       />
-      <TextInput style={styles.input} placeholder={image} />
+      <TextInput
+        style={styles.input}
+        placeholder={image}
+        onChangeText={text => textHandler(text)}
+      />
     </View>
   );
 };
@@ -36,5 +49,9 @@ const styles = StyleSheet.create({
   input: {
     width: '80%',
     marginLeft: 4,
+  },
+  redBorder: {
+    borderWidth: 1,
+    borderColor: 'red',
   },
 });

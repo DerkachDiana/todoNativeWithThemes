@@ -1,8 +1,8 @@
 import React from 'react';
-import {FlatList, StyleSheet, TextInput, View} from 'react-native';
-import {Task} from './components/task';
-import {TaskType} from '../../types/Task';
-import {CustomizedButton} from '../../components/customizedButton';
+import { FlatList, StyleSheet, TextInput, View } from 'react-native';
+import { Task } from './components/task';
+import { TaskType } from '../../types/Task';
+import { CustomizedButton } from '../../components/customizedButton';
 
 interface TasksComponentProps {
   onClickAddButton: () => void;
@@ -10,6 +10,7 @@ interface TasksComponentProps {
   tasks: TaskType[];
   checkboxHandler: (isChecked: boolean) => void;
   deleteTask: (taskId: string) => void;
+  text: string;
 }
 
 export function TasksComponent({
@@ -18,25 +19,27 @@ export function TasksComponent({
   tasks,
   checkboxHandler,
   deleteTask,
+  text
 }: TasksComponentProps) {
   return (
-    <View style={styles.container}>
-      <View style={styles.addTaskBox}>
+    <View style={ styles.container }>
+      <View style={ styles.addTaskBox }>
         <TextInput
-          style={styles.textInput}
-          placeholder={'Write your task here'}
-          onChangeText={inputTextHandler}
+          style={ styles.textInput }
+          placeholder={'Write your task here' }
+          onChangeText={ inputTextHandler }
+          value={text}
         />
         <CustomizedButton
-          onPressFunction={() => onClickAddButton()}
-          stylesProps={styles.button}
-          text={'+'}
+          onPressFunction={ () => onClickAddButton() }
+          stylesProps={ styles.button }
+          text={ '+' }
         />
       </View>
       <FlatList
         style={styles.list}
         data={tasks}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <Task
             task={item}
             checkboxHandler={checkboxHandler}

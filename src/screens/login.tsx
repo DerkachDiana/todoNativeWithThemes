@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleSheet, ImageBackground, SafeAreaView} from 'react-native';
-import {LoginContainer} from '../containers/login/login.container';
+import { StyleSheet, ImageBackground, SafeAreaView } from 'react-native';
+import { LoginContainer } from '../containers/login/login.container';
 
-export const Login = ({navigation}: any) => {
+export const Login = ({ navigation }: any) => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground

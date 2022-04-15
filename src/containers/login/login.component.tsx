@@ -1,27 +1,43 @@
 import React from 'react';
-import {Image, StyleSheet, View, Text} from 'react-native';
-import {LoginInput} from './components/loginInput';
-import {CustomizedButton} from '../../components/customizedButton';
+import { Image, StyleSheet, View, Text } from 'react-native';
+import { LoginInput } from './components/loginInput';
+import { CustomizedButton } from '../../components/customizedButton';
 
 interface LoginComponentProps {
-  navigationFunction: () => void;
+  loginHandler: (text: string) => void;
+  passwordHandler: (text: string) => void;
+  onLoginPress: () => void;
+  redBorder: boolean;
 }
 
-export const LoginComponent = ({navigationFunction}: LoginComponentProps) => {
+export const LoginComponent = ({
+  loginHandler,
+  passwordHandler,
+  onLoginPress,
+  redBorder,
+}: LoginComponentProps) => {
   return (
-    <View style={styles.container}>
+    <View style={ styles.container }>
       <Image
-        style={styles.userPicture}
-        source={require('../../assets/images/user.jpg')}
-        resizeMode={'cover'}
+        style={ styles.userPicture }
+        source={ require('../../assets/images/user.jpg') }
+        resizeMode={ 'cover' }
       />
-      <Text style={styles.title}>Sign in</Text>
-      <LoginInput image={'Username'} />
-      <LoginInput image={'Password'} />
+      <Text style={ styles.title }>Sign in</Text>
+      <LoginInput
+        image={ 'Username' }
+        textHandler={ loginHandler }
+        redBorder={ redBorder }
+      />
+      <LoginInput
+        image={ 'Password' }
+        textHandler={ passwordHandler }
+        redBorder={ redBorder }
+      />
       <CustomizedButton
-        onPressFunction={() => navigationFunction()}
-        text={'LOGIN'}
-        stylesProps={styles.button}
+        onPressFunction={() => onLoginPress()}
+        text={ 'LOGIN' }
+        stylesProps={ styles.button }
       />
     </View>
   );
