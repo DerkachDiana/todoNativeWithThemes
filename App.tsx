@@ -1,27 +1,13 @@
-import React, { useEffect, createContext } from 'react';
-import { Login } from './src/screens/login';
-import { Tabs } from './src/navigation/tabs';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SplashScreen from 'react-native-splash-screen';
-
-const Stack = createNativeStackNavigator();
-const AuthContext = React.createContext();
+import React from 'react';
+import { Provider } from 'react-redux';
+import { store } from './src/redux/store';
+import { Start } from './src/screens/start';
 
 const App = () => {
-  useEffect(() => {
-    SplashScreen.hide();
-  }, []);
-
-  // todo separate component for navigation
-  // todo create 2 navigation containers and switch between them by login logic
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name={'Login'} component={Login} />
-        <Stack.Screen name={'Tabs'} component={Tabs} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={ store }>
+      <Start/>
+    </Provider>
   );
 };
 

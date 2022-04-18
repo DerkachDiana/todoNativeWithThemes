@@ -7,14 +7,14 @@ interface LoginComponentProps {
   loginHandler: (text: string) => void;
   passwordHandler: (text: string) => void;
   onLoginPress: () => void;
-  redBorder: boolean;
+  isRedBorder: boolean;
 }
 
 export const LoginComponent = ({
   loginHandler,
   passwordHandler,
   onLoginPress,
-  redBorder,
+  isRedBorder,
 }: LoginComponentProps) => {
   return (
     <View style={ styles.container }>
@@ -27,14 +27,14 @@ export const LoginComponent = ({
       <LoginInput
         image={ 'Username' }
         textHandler={ loginHandler }
-        redBorder={ redBorder }
-        isPassword={false}
+        isRedBorder={ isRedBorder }
+        isPassword={ false }
 
       />
       <LoginInput
         image={ 'Password' }
         textHandler={ passwordHandler }
-        redBorder={ redBorder }
+        isRedBorder={ isRedBorder }
         isPassword={true}
       />
       <CustomizedButton
@@ -68,13 +68,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    display: 'flex',
-    justifyContent: 'center',
     width: '60%',
     backgroundColor: '#40e6cf',
     paddingHorizontal: 20,
     paddingVertical: 10,
-    borderRadius: 5,
   },
   buttonText: {
     display: 'flex',

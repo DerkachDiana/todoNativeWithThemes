@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
+    padding: 3,
   },
   taskText: {
     flex: 4,

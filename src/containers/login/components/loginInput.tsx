@@ -4,13 +4,13 @@ import { Image, StyleSheet, TextInput, View } from 'react-native';
 interface LoginInputProps {
   image: string;
   textHandler: (text: string) => void;
-  redBorder: boolean;
+  isRedBorder: boolean;
   isPassword: boolean;
 }
 export const LoginInput = ({
   image,
   textHandler,
-  redBorder,
+  isRedBorder,
   isPassword,
 }: LoginInputProps) => {
   const images = {
@@ -21,7 +21,7 @@ export const LoginInput = ({
   return (
     <View
       style={
-        redBorder ? [ styles.container, styles.redBorder ] : styles.container
+        isRedBorder ? [ styles.container, styles.redBorder ] : styles.container
       }>
       <Image
         source={image === 'Username' ? images.user : images.lock}
@@ -31,7 +31,7 @@ export const LoginInput = ({
         style={styles.input}
         placeholder={image}
         onChangeText={text => textHandler(text)}
-        secureTextEntry={isPassword ? true : false}
+        secureTextEntry={isPassword}
       />
     </View>
   );

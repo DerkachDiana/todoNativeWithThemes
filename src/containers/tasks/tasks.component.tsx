@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet, TextInput, View } from 'react-native';
+import { FlatList, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 import { Task } from './components/task';
 import { TaskType } from '../../types/Task';
 import { CustomizedButton } from '../../components/customizedButton';
@@ -12,6 +12,7 @@ interface TasksComponentProps {
   deleteTask: (taskId: string) => void;
   text: string;
   updateTextOfTask: (text: string, taskId: string) => void;
+  signOut: () => void;
 }
 
 export function TasksComponent({
@@ -22,6 +23,7 @@ export function TasksComponent({
   deleteTask,
   text,
   updateTextOfTask,
+  signOut,
 }: TasksComponentProps) {
   return (
     <View style={ styles.container }>
@@ -34,7 +36,7 @@ export function TasksComponent({
         />
         <CustomizedButton
           onPressFunction={ () => onClickAddButton() }
-          stylesProps={ styles.button }
+          stylesProps={ styles.addTaskButton }
           text={ '+' }
         />
       </View>
@@ -50,6 +52,7 @@ export function TasksComponent({
           />
         )}
       />
+      <CustomizedButton onPressFunction={signOut} text={'Sign Out'} stylesProps={ styles.signOutButton }/>
     </View>
   );
 }
@@ -78,16 +81,13 @@ const styles = StyleSheet.create({
     width: '80%',
     height: '100%',
   },
-  button: {
-    display: 'flex',
-    justifyContent: 'center',
+  signOutButton: {
+    width: '100%',
+    height: '15%',
+  },
+  addTaskButton: {
     width: '20%',
     height: '100%',
-    backgroundColor: '#40e6cf',
-    borderRadius: 5,
-  },
-  buttonText: {
-    textAlign: 'center',
   },
   addTaskBox: {
     display: 'flex',

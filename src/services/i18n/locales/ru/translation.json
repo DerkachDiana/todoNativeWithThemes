@@ -1,0 +1,17 @@
+{
+  "translation": {
+    "deleteButton": "Удалить",
+    "signOutButton": "Выйти",
+    "writeYourTaskHere": "Пишите ваши задачи здесь",
+    "aboutCompanyNameTitle": "Название компании:",
+    "aboutCompanyNameDescription": "Наша компания называется \"Компания\"",
+    "aboutBiographyTitle": "Немного о нас:",
+    "aboutBiographyDescription": "В нашей компании работают самые креативные люди. Мы придумали названия для таких брендов как: \"Магазин\"",
+    "tabTasks": "Задачи",
+    "tabAbout": "О нас",
+    "signIn": "Войти",
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "login": "Войти"
+  }
+}

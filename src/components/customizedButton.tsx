@@ -19,13 +19,19 @@ export const CustomizedButton = ({
   stylesProps,
 }: CustomizedButtonProps) => {
   return (
-    <TouchableOpacity style={stylesProps} onPress={() => onPressFunction()}>
+    <TouchableOpacity style={[ stylesProps, styles.button ]} onPress={() => onPressFunction()}>
       <Text style={styles.buttonText}>{text}</Text>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
+  button: {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: '#40e6cf',
+    borderRadius: 5,
+  },
   buttonText: {
     textAlign: 'center',
   },

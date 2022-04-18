@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { LoginComponent } from './login.component';
 import { LoginType } from '../../types/Login';
 import { useNavigation } from '@react-navigation/native';
+import { ToHomeScreenProp } from '../../types/Navigation';
+import { SignInAction } from '../../redux/actions/loginActions';
+import { useDispatch } from 'react-redux';
 
 const MOCK_DATA_ENTRY = {
   login: 'user',
@@ -9,11 +12,9 @@ const MOCK_DATA_ENTRY = {
 };
 
 export const LoginContainer = () => {
-  // todo create typistaion for navigation
-  const navigation = useNavigation();
   const [ loginData, setLoginData ] = useState<LoginType>();
-  // boolean states name starts with is
-  const [ redBorder, setRedBorder ] = useState<boolean>(false);
+  const [ isRedBorder, setIsRedBorder ] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
   const loginHandler = (login: string) => {
     setLoginData({ password: loginData?.password, login: login });
@@ -23,16 +24,11 @@ export const LoginContainer = () => {
     setLoginData({ password: password, login: loginData?.login });
   };
 
-  // rename
-  const navigateToTab = () => {
-    navigation.navigate('Tabs', { name: 'Tabs' });
-  };
-
   const onLoginPress = () => {
     MOCK_DATA_ENTRY.login === loginData?.login &&
     MOCK_DATA_ENTRY.password === loginData.password
-      ? navigateToTab()
-      : setRedBorder(true);
+      ? (dispatch(SignInAction(MOCK_DATA_ENTRY.login)))
+      : setIsRedBorder(true);
   };
 
   return (
@@ -40,7 +36,7 @@ export const LoginContainer = () => {
       loginHandler={ loginHandler }
       passwordHandler={ passwordHandler }
       onLoginPress={ onLoginPress }
-      redBorder={ redBorder }
+      isRedBorder={ isRedBorder }
     />
   );
 };

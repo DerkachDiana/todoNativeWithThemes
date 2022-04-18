@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { TasksComponent } from './tasks.component';
 import { TaskType } from '../../types/Task';
+import { useDispatch } from 'react-redux';
+import { SignOutAction } from '../../redux/actions/loginActions';
 
 const initialTask = {
   _id: '',
@@ -11,6 +13,7 @@ const initialTask = {
 export const TasksContainer = () => {
   const [ tasks, setTasks ] = useState<TaskType[]>([]);
   const [ task, setTask ] = useState<TaskType>(initialTask);
+  const dispatch = useDispatch();
 
   const onClickAddButton = () => {
     const newTask: TaskType = {
@@ -52,6 +55,10 @@ export const TasksContainer = () => {
     setTasks(tasks.filter(item => item._id !== taskId));
   };
 
+  const signOut = () => {
+    dispatch(SignOutAction());
+  };
+
   return (
     <TasksComponent
       onClickAddButton={ onClickAddButton }
@@ -61,6 +68,7 @@ export const TasksContainer = () => {
       deleteTask={ deleteTask }
       text={task.text}
       updateTextOfTask={updateTextOfTask}
+      signOut={signOut}
     />
   );
 };
