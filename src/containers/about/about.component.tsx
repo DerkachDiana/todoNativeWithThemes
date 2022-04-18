@@ -3,7 +3,9 @@ import { Image, StyleSheet, View } from 'react-native';
 import { InfoBox } from './components/infoBox';
 import i18next from '../../services/i18n/i18n';
 import i18n from 'i18next';
+import { useTranslation } from 'react-i18next';
 export const AboutComponent = () => {
+  const { t, i18n } = useTranslation();
   return (
     <View style={ styles.container }>
       <Image
@@ -11,14 +13,12 @@ export const AboutComponent = () => {
         source={ require('../../assets/images/company.jpg') }
       />
       <InfoBox
-        title={ i18next.t('translation.aboutCompanyNameTitle') }
-        description={ i18n.t('translation.aboutCompanyNameDescription') }
+        title={ t('translation.aboutCompanyNameTitle') }
+        description={ t('translation.aboutCompanyNameDescription') }
       />
       <InfoBox
-        title={ i18n.t('translation.aboutBiographyTitle') }
-        description={
-          'В нашей компании работают самые креативные люди. Мы придумали названия для таких брендов как: "Магазин"'
-        }
+        title={ t('translation.aboutBiographyTitle') }
+        description={t('translation.aboutBiographyDescription')}
       />
     </View>
   );

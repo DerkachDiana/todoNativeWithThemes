@@ -14,9 +14,14 @@ const resources = {
 
 i18next
   .use(initReactI18next)
-
   .init({
-    resources
-  });
+    lng: 'en',
+    compatibilityJSON: 'v3',
+    resources,
+    react: {
+      useSuspense: false,
+    }
+  },
+  );
 
 export default i18next;
