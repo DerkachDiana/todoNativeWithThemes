@@ -28,11 +28,14 @@ export const LoginComponent = ({
         image={ 'Username' }
         textHandler={ loginHandler }
         redBorder={ redBorder }
+        isPassword={false}
+
       />
       <LoginInput
         image={ 'Password' }
         textHandler={ passwordHandler }
         redBorder={ redBorder }
+        isPassword={true}
       />
       <CustomizedButton
         onPressFunction={() => onLoginPress()}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { TaskType } from '../../../types/Task';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { CustomizedButton } from '../../../components/customizedButton';
@@ -8,9 +8,10 @@ interface TaskProps {
   task: TaskType;
   checkboxHandler: (isChecked: boolean) => void;
   deleteTask: (taskId: string) => void;
+  updateTextOfTask: (text: string, taskId: string) => void;
 }
 
-export const Task = ({ task, checkboxHandler, deleteTask }: TaskProps) => {
+export const Task = ({ task, checkboxHandler, deleteTask, updateTextOfTask }: TaskProps) => {
   return (
     <View style={ styles.input }>
       <BouncyCheckbox
@@ -18,7 +19,7 @@ export const Task = ({ task, checkboxHandler, deleteTask }: TaskProps) => {
         fillColor={'#40e6cf'}
         onPress={ (isChecked: boolean) => checkboxHandler(isChecked) }
       />
-      <Text style={ styles.taskText }>{ task.text }</Text>
+      <TextInput style={ styles.taskText } value={task.text} onChangeText={(text) => updateTextOfTask(text, task._id)} />
       <CustomizedButton
         onPressFunction={ () => deleteTask(task._id) }
         text={ 'Delete' }

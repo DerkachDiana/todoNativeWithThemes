@@ -5,16 +5,19 @@ interface LoginInputProps {
   image: string;
   textHandler: (text: string) => void;
   redBorder: boolean;
+  isPassword: boolean;
 }
 export const LoginInput = ({
   image,
   textHandler,
   redBorder,
+  isPassword,
 }: LoginInputProps) => {
   const images = {
     user: require('../../../assets/icons/user.png'),
     lock: require('../../../assets/icons/lock.png'),
   };
+
   return (
     <View
       style={
@@ -28,6 +31,7 @@ export const LoginInput = ({
         style={styles.input}
         placeholder={image}
         onChangeText={text => textHandler(text)}
+        secureTextEntry={isPassword ? true : false}
       />
     </View>
   );

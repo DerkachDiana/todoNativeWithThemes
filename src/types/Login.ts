@@ -1,4 +1,8 @@
 export interface LoginType {
-  login: string;
-  password: string;
+  login: string | undefined
+  password: string | undefined
+}
+
+export enum LoginEnum {
+
 }

@@ -42,6 +42,7 @@ export const Tabs = () => {
     </SafeAreaView>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     display: 'flex',

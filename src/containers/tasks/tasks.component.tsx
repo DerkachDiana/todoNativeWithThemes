@@ -11,6 +11,7 @@ interface TasksComponentProps {
   checkboxHandler: (isChecked: boolean) => void;
   deleteTask: (taskId: string) => void;
   text: string;
+  updateTextOfTask: (text: string, taskId: string) => void;
 }
 
 export function TasksComponent({
@@ -19,7 +20,8 @@ export function TasksComponent({
   tasks,
   checkboxHandler,
   deleteTask,
-  text
+  text,
+  updateTextOfTask,
 }: TasksComponentProps) {
   return (
     <View style={ styles.container }>
@@ -44,6 +46,7 @@ export function TasksComponent({
             task={item}
             checkboxHandler={checkboxHandler}
             deleteTask={deleteTask}
+            updateTextOfTask={updateTextOfTask}
           />
         )}
       />
