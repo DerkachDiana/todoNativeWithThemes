@@ -1,17 +1,25 @@
 {
   "translation": {
-    "deleteButton": "delete",
-    "signOutButton": "Sign Out",
-    "writeYourTaskHere": "Write your task here",
-    "aboutCompanyNameTitle": "Company name",
-    "aboutCompanyNameDescription": "The name of our company is 'Company'",
-    "aboutBiographyTitle": "About us",
-    "aboutBiographyDescription": "In our company works the most creative people. We created names for brands like: 'Shop'",
-    "tabTasks": "Tasks",
-    "tabAbout": "About",
-    "signIn": "Sign in",
-    "username": "Username",
-    "password": "Password",
-    "login": "Login"
+    "tab": {
+      "tasks": "Tasks",
+      "about": "About"
+    },
+    "aboutScreen": {
+      "aboutCompanyNameTitle": "Company name",
+      "aboutCompanyNameDescription": "The name of our company is 'Company'",
+      "aboutBiographyTitle": "About us",
+      "aboutBiographyDescription": "In our company works the most creative people. We created names for brands like: 'Shop'"
+    },
+    "loginScreen": {
+      "signIn": "Sign in",
+      "username": "Username",
+      "password": "Password",
+      "login": "Login"
+    },
+    "tasksScreen": {
+      "deleteButton": "delete",
+      "signOutButton": "Sign Out",
+      "writeYourTaskHere": "Write your task here"
+    }
   }
 }

@@ -15,12 +15,15 @@ const resources = {
 i18next
   .use(initReactI18next)
   .init({
-    lng: 'en',
+    fallbackLng: 'ru',
     compatibilityJSON: 'v3',
     resources,
-    react: {
-      useSuspense: false,
-    }
+    interpolation: {
+      escapeValue: false,
+    },
+    // react: {
+    //   useSuspense: false,
+    // }
   },
   );
 

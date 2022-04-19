@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, View, Text } from 'react-native';
 import { LoginInput } from './components/loginInput';
 import { CustomizedButton } from '../../components/customizedButton';
+import { useTranslation } from 'react-i18next';
 
 interface LoginComponentProps {
   loginHandler: (text: string) => void;
@@ -16,6 +17,7 @@ export const LoginComponent = ({
   onLoginPress,
   isRedBorder,
 }: LoginComponentProps) => {
+  const { t, i18n } = useTranslation();
   return (
     <View style={ styles.container }>
       <Image
@@ -23,23 +25,23 @@ export const LoginComponent = ({
         source={ require('../../assets/images/user.jpg') }
         resizeMode={ 'cover' }
       />
-      <Text style={ styles.title }>Sign in</Text>
+      <Text style={ styles.title }>{t('translation.loginScreen.signIn')}</Text>
       <LoginInput
-        image={ 'Username' }
+        image={ t('translation.loginScreen.username') }
         textHandler={ loginHandler }
         isRedBorder={ isRedBorder }
         isPassword={ false }
 
       />
       <LoginInput
-        image={ 'Password' }
+        image={ t('translation.loginScreen.password') }
         textHandler={ passwordHandler }
         isRedBorder={ isRedBorder }
         isPassword={true}
       />
       <CustomizedButton
         onPressFunction={() => onLoginPress()}
-        text={ 'LOGIN' }
+        text={ t('translation.loginScreen.login') }
         stylesProps={ styles.button }
       />
     </View>

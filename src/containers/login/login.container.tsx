@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { LoginComponent } from './login.component';
 import { LoginType } from '../../types/Login';
-import { useNavigation } from '@react-navigation/native';
-import { ToHomeScreenProp } from '../../types/Navigation';
 import { SignInAction } from '../../redux/actions/loginActions';
 import { useDispatch } from 'react-redux';
 

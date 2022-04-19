@@ -3,6 +3,7 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { TaskType } from '../../../types/Task';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { CustomizedButton } from '../../../components/customizedButton';
+import { useTranslation } from 'react-i18next';
 
 interface TaskProps {
   task: TaskType;
@@ -12,6 +13,7 @@ interface TaskProps {
 }
 
 export const Task = ({ task, checkboxHandler, deleteTask, updateTextOfTask }: TaskProps) => {
+  const { t } = useTranslation();
   return (
     <View style={ styles.input }>
       <BouncyCheckbox
@@ -22,7 +24,7 @@ export const Task = ({ task, checkboxHandler, deleteTask, updateTextOfTask }: Ta
       <TextInput style={ styles.taskText } value={task.text} onChangeText={(text) => updateTextOfTask(text, task._id)} />
       <CustomizedButton
         onPressFunction={ () => deleteTask(task._id) }
-        text={ 'Delete' }
+        text={ t('translation.tasksScreen.deleteButton') }
         stylesProps={ styles.button }
       />
     </View>

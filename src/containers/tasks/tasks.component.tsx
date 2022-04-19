@@ -3,6 +3,7 @@ import { FlatList, StyleSheet, TextInput, TouchableOpacity, View } from 'react-n
 import { Task } from './components/task';
 import { TaskType } from '../../types/Task';
 import { CustomizedButton } from '../../components/customizedButton';
+import { useTranslation } from 'react-i18next';
 
 interface TasksComponentProps {
   onClickAddButton: () => void;
@@ -25,12 +26,13 @@ export function TasksComponent({
   updateTextOfTask,
   signOut,
 }: TasksComponentProps) {
+  const { t } = useTranslation();
   return (
     <View style={ styles.container }>
       <View style={ styles.addTaskBox }>
         <TextInput
           style={ styles.textInput }
-          placeholder={'Write your task here' }
+          placeholder={t('translation.tasksScreen.writeYourTaskHere')}
           onChangeText={ inputTextHandler }
           value={text}
         />
@@ -52,7 +54,7 @@ export function TasksComponent({
           />
         )}
       />
-      <CustomizedButton onPressFunction={signOut} text={'Sign Out'} stylesProps={ styles.signOutButton }/>
+      <CustomizedButton onPressFunction={signOut} text={t('translation.tasksScreen.signOutButton')} stylesProps={ styles.signOutButton }/>
     </View>
   );
 }

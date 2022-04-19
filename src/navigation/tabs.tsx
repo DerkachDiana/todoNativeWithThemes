@@ -3,10 +3,12 @@ import { Image, SafeAreaView, StyleSheet } from 'react-native';
 import { About } from '../screens/about';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { Tasks } from '../screens/tasks';
+import { useTranslation } from 'react-i18next';
 
 const Tab = createMaterialBottomTabNavigator();
 
 export const Tabs = () => {
+  const { t } = useTranslation();
   return (
     <SafeAreaView style={ styles.container }>
       <Tab.Navigator
@@ -16,7 +18,7 @@ export const Tabs = () => {
           name={ 'TaskList' }
           component={ Tasks }
           options={{
-            tabBarLabel: 'Tasks',
+            tabBarLabel: t('translation.tab.tasks'),
             tabBarIcon: () => (
               <Image
                 source={require('../assets/icons/tasks.png')}
@@ -29,7 +31,7 @@ export const Tabs = () => {
           name={ 'About' }
           component={ About }
           options={{
-            tabBarLabel: 'About',
+            tabBarLabel: t('translation.tab.about'),
             tabBarIcon: () => (
               <Image
                 source={ require('../assets/icons/about.png') }

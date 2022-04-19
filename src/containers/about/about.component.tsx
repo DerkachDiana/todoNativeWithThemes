@@ -1,8 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { InfoBox } from './components/infoBox';
-import i18next from '../../services/i18n/i18n';
-import i18n from 'i18next';
 import { useTranslation } from 'react-i18next';
 export const AboutComponent = () => {
   const { t, i18n } = useTranslation();
@@ -13,12 +11,12 @@ export const AboutComponent = () => {
         source={ require('../../assets/images/company.jpg') }
       />
       <InfoBox
-        title={ t('translation.aboutCompanyNameTitle') }
-        description={ t('translation.aboutCompanyNameDescription') }
+        title={ t('translation.aboutScreen.companyNameTitle') }
+        description={ t('translation.aboutScreen.companyNameDescription') }
       />
       <InfoBox
-        title={ t('translation.aboutBiographyTitle') }
-        description={t('translation.aboutBiographyDescription')}
+        title={ t('translation.aboutScreen.biographyTitle') }
+        description={ t('translation.aboutScreen.biographyDescription')}
       />
     </View>
   );
