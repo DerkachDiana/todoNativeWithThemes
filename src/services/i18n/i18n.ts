@@ -1,5 +1,6 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import I18n from 'react-native-i18n';
 import translationEn from './locales/en/translation.json';
 import translationRu from './locales/ru/translation.json';
 
@@ -15,7 +16,6 @@ const resources = {
 i18next
   .use(initReactI18next)
   .init({
-    fallbackLng: 'ru',
     compatibilityJSON: 'v3',
     resources,
     interpolation: {
@@ -26,5 +26,5 @@ i18next
     // }
   },
   );
-
+i18next.fallbacks = true;
 export default i18next;

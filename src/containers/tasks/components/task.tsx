@@ -44,11 +44,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    flex: 1,
+    flex: 2,
     padding: 3,
   },
   taskText: {
-    flex: 4,
+    flex: 5,
     flexWrap: 'nowrap',
   },
 });
