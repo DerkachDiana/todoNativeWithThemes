@@ -3,6 +3,7 @@ import { TasksComponent } from './tasks.component';
 import { TaskType } from '../../types/Task';
 import { useDispatch } from 'react-redux';
 import { SignOutAction } from '../../redux/actions/loginActions';
+import { tasksStore } from '../../mobx/store';
 
 const initialTask = {
   _id: '',
@@ -11,7 +12,6 @@ const initialTask = {
 };
 
 export const TasksContainer = () => {
-  const [ tasks, setTasks ] = useState<TaskType[]>([]);
   const [ task, setTask ] = useState<TaskType>(initialTask);
   const dispatch = useDispatch();
 
@@ -21,20 +21,10 @@ export const TasksContainer = () => {
       text: task.text,
       isChecked: false,
     };
-    setTasks([ ...tasks, newTask ]);
-    setTask( { _id: '', text: '', isChecked: false });
+    tasksStore.addTask(newTask);
   };
   const updateTextOfTask = (text: string, taskId: string) => {
-    const updatedTasks: TaskType[] = tasks.map((task) =>
-      task._id === taskId ?
-        {
-          _id: task._id,
-          isChecked: task.isChecked,
-          text: text
-        }
-        : task
-    );
-    setTasks(updatedTasks);
+    tasksStore.updateTask({ _id: taskId, isChecked: task.isChecked, text: text });
   };
 
   const inputTextHandler = (text: string) => {
@@ -52,7 +42,7 @@ export const TasksContainer = () => {
     });
   };
   const deleteTask = (taskId: string) => {
-    setTasks(tasks.filter(item => item._id !== taskId));
+    tasksStore.deleteTask(taskId);
   };
 
   const signOut = () => {
@@ -63,7 +53,6 @@ export const TasksContainer = () => {
     <TasksComponent
       onClickAddButton={ onClickAddButton }
       inputTextHandler={ inputTextHandler }
-      tasks={tasks}
       checkboxHandler={ checkboxHandler }
       deleteTask={ deleteTask }
       text={task.text}

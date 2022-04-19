@@ -1,14 +1,14 @@
 import React from 'react';
-import { FlatList, StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { FlatList, StyleSheet, TextInput, View } from 'react-native';
 import { Task } from './components/task';
-import { TaskType } from '../../types/Task';
 import { CustomizedButton } from '../../components/customizedButton';
 import { useTranslation } from 'react-i18next';
+import { tasksStore } from '../../mobx/store';
+import { observer } from 'mobx-react';
 
 interface TasksComponentProps {
   onClickAddButton: () => void;
   inputTextHandler: (text: string) => void;
-  tasks: TaskType[];
   checkboxHandler: (isChecked: boolean) => void;
   deleteTask: (taskId: string) => void;
   text: string;
@@ -16,16 +16,15 @@ interface TasksComponentProps {
   signOut: () => void;
 }
 
-export function TasksComponent({
+export const TasksComponent = observer(({
   onClickAddButton,
   inputTextHandler,
-  tasks,
   checkboxHandler,
   deleteTask,
   text,
   updateTextOfTask,
   signOut,
-}: TasksComponentProps) {
+}: TasksComponentProps) => {
   const { t } = useTranslation();
   return (
     <View style={ styles.container }>
@@ -43,8 +42,8 @@ export function TasksComponent({
         />
       </View>
       <FlatList
-        style={styles.list}
-        data={tasks}
+        style={ styles.list }
+        data={ tasksStore.tasks }
         renderItem={({ item }) => (
           <Task
             task={item}
@@ -57,7 +56,7 @@ export function TasksComponent({
       <CustomizedButton onPressFunction={signOut} text={t('translation.tasksScreen.signOutButton')} stylesProps={ styles.signOutButton }/>
     </View>
   );
-}
+});
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 30,
