@@ -17,7 +17,7 @@
       "login": "Login"
     },
     "tasksScreen": {
-      "deleteButton": "delete",
+      "deleteButton": "Delete",
       "signOutButton": "Sign Out",
       "writeYourTaskHere": "Write your task here"
     }
