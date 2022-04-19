@@ -4,6 +4,7 @@ import { TaskType } from '../../types/Task';
 import { useDispatch } from 'react-redux';
 import { SignOutAction } from '../../redux/actions/loginActions';
 import { tasksStore } from '../../mobx/store';
+import { setState } from '../../asyncStorage/asyncStore';
 
 const initialTask = {
   _id: '',
@@ -46,6 +47,7 @@ export const TasksContainer = () => {
   };
 
   const signOut = () => {
+    setState({ isLoading: false, isSignOut: true, userToken: null });
     dispatch(SignOutAction());
   };
 

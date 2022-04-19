@@ -4,14 +4,15 @@ import SplashScreen from 'react-native-splash-screen';
 import { MainNavigation } from '../navigation/mainNavigation';
 import { RestoreTokenAction } from '../redux/actions/loginActions';
 import { appStateSelector } from '../redux/selectors/selectors';
+import { getState } from '../asyncStorage/asyncStore';
+import loginReducer from '../redux/reducers/loginReduser';
 
 export const Start = () => {
   const appState = useSelector(appStateSelector);
   const dispatch = useDispatch();
   useEffect(() => {
     SplashScreen.hide();
-    // we should get it from database, but now set it manually
-    dispatch( RestoreTokenAction(null) );
+    getState().then((state) => dispatch( RestoreTokenAction(state.userToken)));
   }, []);
 
   return (

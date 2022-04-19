@@ -3,7 +3,7 @@ import { Image, StyleSheet, View } from 'react-native';
 import { InfoBox } from './components/infoBox';
 import { useTranslation } from 'react-i18next';
 export const AboutComponent = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   return (
     <View style={ styles.container }>
       <Image
