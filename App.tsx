@@ -6,7 +6,9 @@ import { Start } from './src/screens/start';
 const App = () => {
   return (
     <Provider store={ store }>
+      {/*<ApolloProvider client={client}>*/}
       <Start/>
+      {/*</ApolloProvider>*/}
     </Provider>
   );
 };

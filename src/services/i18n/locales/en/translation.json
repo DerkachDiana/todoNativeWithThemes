@@ -5,10 +5,10 @@
       "about": "About"
     },
     "aboutScreen": {
-      "aboutCompanyNameTitle": "Company name",
-      "aboutCompanyNameDescription": "The name of our company is 'Company'",
-      "aboutBiographyTitle": "About us",
-      "aboutBiographyDescription": "In our company works the most creative people. We created names for brands like: 'Shop'"
+      "companyNameTitle": "Company name",
+      "companyNameDescription": "The name of our company is 'Company'",
+      "biographyTitle": "About us",
+      "biographyDescription": "In our company works the most creative people. We created names for brands like: 'Shop'"
     },
     "loginScreen": {
       "signIn": "Sign in",
