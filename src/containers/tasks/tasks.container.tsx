@@ -23,6 +23,9 @@ export const TasksContainer = () => {
       isChecked: false,
     };
     tasksStore.addTask(newTask);
+    setTask({
+      ...task, text: ''
+    });
   };
   const updateTextOfTask = (text: string, taskId: string) => {
     tasksStore.updateTask({ _id: taskId, isChecked: task.isChecked, text: text });

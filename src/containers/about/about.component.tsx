@@ -2,10 +2,16 @@ import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { InfoBox } from './components/infoBox';
 import { useTranslation } from 'react-i18next';
-export const AboutComponent = () => {
+import { tasksStore } from '../../mobx/store';
+import { observer } from 'mobx-react';
+import { t } from 'i18next';
+export const AboutComponent = observer(() => {
   const { t } = useTranslation();
   return (
-    <View style={ styles.container }>
+    <View style={ tasksStore.theme.light
+      ? [ LIGHT_THEME.container, styles.container ]
+      : [ DARK_THEME.container, styles.container ]
+    }>
       <Image
         style={ styles.image }
         source={ require('../../assets/images/company.jpg') }
@@ -20,13 +26,14 @@ export const AboutComponent = () => {
       />
     </View>
   );
-};
+});
 const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     marginBottom: 10,
+    height: '100%'
   },
   image: {
     borderRadius: 100,
@@ -34,4 +41,16 @@ const styles = StyleSheet.create({
     height: 100,
     marginVertical: 20,
   },
+});
+
+const DARK_THEME = StyleSheet.create({
+  container: {
+    backgroundColor: '#1C1C1C',
+  },
+});
+
+const LIGHT_THEME = StyleSheet.create({
+  container: {
+    backgroundColor: '#F1F1F1',
+  }
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet, TextInput, View } from 'react-native';
+import { FlatList, KeyboardAvoidingView, StyleSheet, TextInput, View } from 'react-native';
 import { Task } from './components/task';
 import { CustomizedButton } from '../../components/customizedButton';
 import { useTranslation } from 'react-i18next';
@@ -27,11 +27,19 @@ export const TasksComponent = observer(({
 }: TasksComponentProps) => {
   const { t } = useTranslation();
   return (
-    <View style={ styles.container }>
+    <View style={ tasksStore.theme.light
+      ?
+      [ styles.container, LIGHT_THEME.container ]
+      :
+      [ styles.container, DARK_THEME.container ]
+    }>
       <View style={ styles.addTaskBox }>
         <TextInput
-          style={ styles.textInput }
+          style={ tasksStore.theme.light
+            ? [ styles.textInput, LIGHT_THEME.textInput ]
+            : [ styles.textInput, DARK_THEME.textInput ]}
           placeholder={t('translation.tasksScreen.writeYourTaskHere')}
+          placeholderTextColor={ tasksStore.theme.light ? 'gray' : 'white'}
           onChangeText={ inputTextHandler }
           value={text}
         />
@@ -70,7 +78,6 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   textInput: {
-    backgroundColor: 'white',
     paddingHorizontal: 30,
     paddingVertical: 10,
     marginBottom: 10,
@@ -97,4 +104,26 @@ const styles = StyleSheet.create({
     height: 40,
     marginBottom: 10,
   },
+});
+
+const LIGHT_THEME = StyleSheet.create({
+  container: {
+    backgroundColor: '#F1F1F1',
+  },
+  textInput: {
+    backgroundColor: 'white',
+    color: 'black'
+  }
+});
+const DARK_THEME = StyleSheet.create({
+  container: {
+    backgroundColor: '#1C1C1C',
+  },
+  textInput: {
+    backgroundColor: '#2E2E2E',
+    color: '#FFF'
+  },
+  test: {
+    color: 'white'
+  }
 });

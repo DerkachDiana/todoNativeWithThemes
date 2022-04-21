@@ -27,6 +27,7 @@ export const LoginContainer = () => {
     setState({ isLoading: false, isSignOut: false, userToken: userToken });
     dispatch(SignInAction(MOCK_DATA_ENTRY.login));
   };
+
   const onLoginPress = () => {
     MOCK_DATA_ENTRY.login === loginData?.login &&
     MOCK_DATA_ENTRY.password === loginData.password

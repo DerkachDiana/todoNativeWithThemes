@@ -18,6 +18,7 @@ export const LoginComponent = ({
   isRedBorder,
 }: LoginComponentProps) => {
   const { t, i18n } = useTranslation();
+
   return (
     <View style={ styles.container }>
       <Image
@@ -25,7 +26,7 @@ export const LoginComponent = ({
         source={ require('../../assets/images/user.jpg') }
         resizeMode={ 'cover' }
       />
-      <Text style={ styles.title }>{t('translation.loginScreen.signIn')}</Text>
+      <Text style={ styles.color }>{t('translation.loginScreen.signIn')}</Text>
       <LoginInput
         image={ t('translation.loginScreen.username') }
         textHandler={ loginHandler }
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
     borderRadius: 70,
     marginBottom: 20,
   },
-  title: {
+  color: {
     fontSize: 32,
     fontFamily: 'PT Sans',
     marginBottom: 20,
