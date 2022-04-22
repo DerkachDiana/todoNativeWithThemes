@@ -1,10 +1,16 @@
 import React from 'react';
-import { FlatList, KeyboardAvoidingView, StyleSheet, TextInput, View } from 'react-native';
-import { Task } from './components/task';
+import {
+  FlatList,
+  StyleSheet,
+  TextInput,
+  View,
+} from 'react-native';
+import { Task } from './task/task';
 import { CustomizedButton } from '../../components/customizedButton';
 import { useTranslation } from 'react-i18next';
 import { tasksStore } from '../../mobx/store';
 import { observer } from 'mobx-react';
+import { KeyboardAwareFlatList, KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 interface TasksComponentProps {
   onClickAddButton: () => void;
@@ -49,8 +55,8 @@ export const TasksComponent = observer(({
           text={ '+' }
         />
       </View>
-      <FlatList
-        style={ styles.list }
+      {/*// todo*/}
+      <KeyboardAwareFlatList
         data={ tasksStore.tasks }
         renderItem={({ item }) => (
           <Task
@@ -60,8 +66,12 @@ export const TasksComponent = observer(({
             updateTextOfTask={updateTextOfTask}
           />
         )}
+        extraHeight={0}
       />
-      <CustomizedButton onPressFunction={signOut} text={t('translation.tasksScreen.signOutButton')} stylesProps={ styles.signOutButton }/>
+      <CustomizedButton
+        onPressFunction={signOut}
+        text={t('translation.tasksScreen.signOutButton')}
+        stylesProps={ styles.signOutButton }/>
     </View>
   );
 });
@@ -74,7 +84,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   list: {
-    height: '85%',
+    height: '95%',
     width: '100%',
   },
   textInput: {

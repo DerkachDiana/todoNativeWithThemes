@@ -5,7 +5,6 @@ import { MainNavigation } from '../navigation/mainNavigation';
 import { RestoreTokenAction } from '../redux/actions/loginActions';
 import { appStateSelector } from '../redux/selectors/selectors';
 import { getState } from '../asyncStorage/asyncStore';
-import loginReducer from '../redux/reducers/loginReduser';
 
 export const Start = () => {
   const appState = useSelector(appStateSelector);

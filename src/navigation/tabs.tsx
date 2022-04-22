@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { Queries } from '../screens/queries';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { tasksStore } from '../mobx/store';
+import { observer } from 'mobx-react';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +16,7 @@ const client = new ApolloClient(({
   cache: new InMemoryCache()
 }));
 
-export const Tabs = () => {
+export const Tabs = observer(() => {
   const { t } = useTranslation();
   const icons = {
     tasksWhite: require('../assets/icons/tasksWhite.png'),
@@ -43,7 +44,7 @@ export const Tabs = () => {
               tabBarLabel: t('translation.tab.tasks'),
               tabBarIcon: () => (
                 <Image
-                  source={tasksStore.theme.light ? icons.tasksWhite : icons.tasksBlack}
+                  source={tasksStore.theme.light ? icons.tasksBlack : icons.tasksWhite}
                   style={ styles.icons }
                 />
               ),
@@ -56,7 +57,7 @@ export const Tabs = () => {
               tabBarLabel: t('translation.tab.about'),
               tabBarIcon: () => (
                 <Image
-                  source={ tasksStore.theme.light ? icons.aboutWhite : icons.aboutBlack }
+                  source={ tasksStore.theme.light ? icons.aboutBlack : icons.aboutWhite }
                   style={ styles.icons }
                 />
               ),
@@ -69,7 +70,8 @@ export const Tabs = () => {
               tabBarLabel: 'GraphQL',
               tabBarIcon: () => (
                 <Image
-                  source={ tasksStore.theme.light ? icons.graphQlWhite : icons.graphQlBlack }
+                  source={ tasksStore.theme.light ? icons.graphQlBlack : icons.graphQlWhite }
+                  // source={ icons.graphQlBlack }
                   style={ styles.icons }
                 />
               )
@@ -80,7 +82,7 @@ export const Tabs = () => {
       </SafeAreaView>
     </ApolloProvider>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

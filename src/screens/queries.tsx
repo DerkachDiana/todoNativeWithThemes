@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { GET_ALL_USERS } from '../services/graphQL/client/query/user';
 import { useQuery } from '@apollo/client';
 import { tasksStore } from '../mobx/store';

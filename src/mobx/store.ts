@@ -38,7 +38,7 @@ export class TasksStore {
     });
   }
   changeTheme() {
-    this.theme.light ? this.theme.light = false : this.theme.light = true;
+    this.theme.light = !this.theme.light;
   }
 }
 export const tasksStore = new TasksStore();

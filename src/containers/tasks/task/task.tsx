@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, TextInput, View } from 'react-native';
 import { TaskType } from '../../../types/Task';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import { CustomizedButton } from '../../../components/customizedButton';

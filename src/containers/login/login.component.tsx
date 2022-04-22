@@ -1,6 +1,6 @@
 import React from 'react';
-import { Image, StyleSheet, View, Text } from 'react-native';
-import { LoginInput } from './components/loginInput';
+import { Image, StyleSheet, View, Text, KeyboardAvoidingView } from 'react-native';
+import { LoginInput } from './loginInput/loginInput';
 import { CustomizedButton } from '../../components/customizedButton';
 import { useTranslation } from 'react-i18next';
 
@@ -17,9 +17,10 @@ export const LoginComponent = ({
   onLoginPress,
   isRedBorder,
 }: LoginComponentProps) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
+
     <View style={ styles.container }>
       <Image
         style={ styles.userPicture }
@@ -40,12 +41,15 @@ export const LoginComponent = ({
         isRedBorder={ isRedBorder }
         isPassword={true}
       />
-      <CustomizedButton
-        onPressFunction={() => onLoginPress()}
-        text={ t('translation.loginScreen.login') }
-        stylesProps={ styles.button }
-      />
+      <KeyboardAvoidingView behavior={'padding'} style={styles.keyboardContainer}>
+        <CustomizedButton
+          onPressFunction={() => onLoginPress()}
+          text={ t('translation.loginScreen.login') }
+          stylesProps={ styles.button }
+        />
+      </KeyboardAvoidingView>
     </View>
+
   );
 };
 
@@ -80,4 +84,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     textAlign: 'center',
   },
+  keyboardContainer: {
+    position: 'relative',
+  }
 });

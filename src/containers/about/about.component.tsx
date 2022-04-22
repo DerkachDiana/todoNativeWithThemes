@@ -1,10 +1,9 @@
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
-import { InfoBox } from './components/infoBox';
+import { InfoBox } from './infoBox/infoBox';
 import { useTranslation } from 'react-i18next';
 import { tasksStore } from '../../mobx/store';
 import { observer } from 'mobx-react';
-import { t } from 'i18next';
 export const AboutComponent = observer(() => {
   const { t } = useTranslation();
   return (
