@@ -11,7 +11,7 @@ export const InfoBox = ({ title, description }: InfoBoxProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.color}>{title}</Text>
-      <Text style={styles.description}>{description}</Text>
+      <Text>{description}</Text>
     </View>
   );
 };
