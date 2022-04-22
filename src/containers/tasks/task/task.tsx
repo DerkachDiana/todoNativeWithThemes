@@ -16,20 +16,15 @@ interface TaskProps {
 export const Task = ({ task, checkboxHandler, deleteTask, updateTextOfTask }: TaskProps) => {
   const { t } = useTranslation();
   return (
-    <View style={ tasksStore.theme.light
-      ? [ styles.input, LIGHT_THEME.input ]
-      : [ styles.input, DARK_THEME.input ]}>
+    <View style={ styles.input }>
       <BouncyCheckbox
         iconStyle={{ borderColor: '#40e6cf' }}
         fillColor={'#40e6cf'}
         onPress={ (isChecked: boolean) => checkboxHandler(isChecked) }
       />
-      <TextInput style={ tasksStore.theme.light
-        ?
-        [ styles.taskText, LIGHT_THEME.taskText ]
-        :
-        [ styles.taskText, DARK_THEME.taskText ]
-      } value={task.text} onChangeText={(text) => updateTextOfTask(text, task._id)} />
+      <TextInput style={ styles.taskText }
+        value={task.text}
+        onChangeText={(text) => updateTextOfTask(text, task._id)} />
       <CustomizedButton
         onPressFunction={ () => deleteTask(task._id) }
         text={ t('translation.tasksScreen.deleteButton') }

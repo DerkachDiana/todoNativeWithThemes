@@ -19,9 +19,7 @@ export const Queries = observer(() => {
     }
   }, [ data ]);
   return (
-    <View style={ tasksStore.theme.light
-      ? [ LIGHT_THEME.container, styles.container ]
-      : [ DARK_THEME.container, styles.container ] }>
+    <View style={ styles.container }>
       <View>
         <FlatList data={users} renderItem={({ item }) => (
           <Text>{item.username} {item.age}</Text>

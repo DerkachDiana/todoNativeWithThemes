@@ -10,8 +10,8 @@ interface InfoBoxProps {
 export const InfoBox = ({ title, description }: InfoBoxProps) => {
   return (
     <View style={styles.container}>
-      <Text style={tasksStore.theme.light ? [ styles.color, LIGHT_MODE.color ] : [ styles.color, DARK_MODE.color ]}>{title}</Text>
-      <Text style={tasksStore.theme.light ? [ styles.description, LIGHT_MODE.color ] : [ styles.description, DARK_MODE.color ]}>{description}</Text>
+      <Text style={styles.color}>{title}</Text>
+      <Text style={styles.description}>{description}</Text>
     </View>
   );
 };
@@ -24,11 +24,7 @@ const styles = StyleSheet.create({
     width: 300,
   },
   color: {
-    color: 'gray',
     fontSize: 12,
-  },
-  description: {
-    color: 'black',
   },
 });
 

@@ -2,15 +2,12 @@ import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { InfoBox } from './infoBox/infoBox';
 import { useTranslation } from 'react-i18next';
-import { tasksStore } from '../../mobx/store';
 import { observer } from 'mobx-react';
 export const AboutComponent = observer(() => {
   const { t } = useTranslation();
   return (
-    <View style={ tasksStore.theme.light
-      ? [ LIGHT_THEME.container, styles.container ]
-      : [ DARK_THEME.container, styles.container ]
-    }>
+
+    <View style={ styles.container }>
       <Image
         style={ styles.image }
         source={ require('../../assets/images/company.jpg') }

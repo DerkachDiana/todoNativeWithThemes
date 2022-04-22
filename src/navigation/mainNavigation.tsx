@@ -1,10 +1,10 @@
 import React from 'react';
 import { Login } from '../screens/login';
 import { Tabs } from './tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StateType } from '../types/State';
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, useColorScheme, View } from 'react-native';
 
 interface mainNavigationProps {
   state: StateType;
@@ -12,6 +12,7 @@ interface mainNavigationProps {
 
 export const MainNavigation = ({ state }: mainNavigationProps) => {
   const Stack = createNativeStackNavigator();
+  const scheme = useColorScheme();
   if (state.isLoading) {
     return (
       <View>
@@ -22,16 +23,15 @@ export const MainNavigation = ({ state }: mainNavigationProps) => {
       </View>
     );
   }
-
   return (
     state.userToken === null ? (
-      <NavigationContainer>
+      <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack.Navigator>
           <Stack.Screen name={'Login'} component={ Login } />
         </Stack.Navigator>
       </NavigationContainer>
     ) : (
-      <NavigationContainer>
+      <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme} >
         <Stack.Navigator>
           <Stack.Screen name={'Tabs'} component={ Tabs } />
         </Stack.Navigator>

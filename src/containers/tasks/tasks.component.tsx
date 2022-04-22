@@ -33,19 +33,11 @@ export const TasksComponent = observer(({
 }: TasksComponentProps) => {
   const { t } = useTranslation();
   return (
-    <View style={ tasksStore.theme.light
-      ?
-      [ styles.container, LIGHT_THEME.container ]
-      :
-      [ styles.container, DARK_THEME.container ]
-    }>
+    <View style={ styles.container }>
       <View style={ styles.addTaskBox }>
         <TextInput
-          style={ tasksStore.theme.light
-            ? [ styles.textInput, LIGHT_THEME.textInput ]
-            : [ styles.textInput, DARK_THEME.textInput ]}
+          style={ styles.textInput }
           placeholder={t('translation.tasksScreen.writeYourTaskHere')}
-          placeholderTextColor={ tasksStore.theme.light ? 'gray' : 'white'}
           onChangeText={ inputTextHandler }
           value={text}
         />
