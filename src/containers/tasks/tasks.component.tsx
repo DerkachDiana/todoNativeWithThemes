@@ -33,11 +33,12 @@ export const TasksComponent = observer(({
 }: TasksComponentProps) => {
   const { t } = useTranslation();
   return (
-    <View style={ styles.container }>
+    <View style={ [ styles.container, { backgroundColor: tasksStore.theme?.backgroundColor } ] }>
       <View style={ styles.addTaskBox }>
         <TextInput
-          style={ styles.textInput }
+          style={ [ styles.textInput, { color: tasksStore.theme?.color } ] }
           placeholder={t('translation.tasksScreen.writeYourTaskHere')}
+          placeholderTextColor={tasksStore.theme?.color}
           onChangeText={ inputTextHandler }
           value={text}
         />
@@ -106,26 +107,4 @@ const styles = StyleSheet.create({
     height: 40,
     marginBottom: 10,
   },
-});
-
-const LIGHT_THEME = StyleSheet.create({
-  container: {
-    backgroundColor: '#F1F1F1',
-  },
-  textInput: {
-    backgroundColor: 'white',
-    color: 'black'
-  }
-});
-const DARK_THEME = StyleSheet.create({
-  container: {
-    backgroundColor: '#1C1C1C',
-  },
-  textInput: {
-    backgroundColor: '#2E2E2E',
-    color: '#FFF'
-  },
-  test: {
-    color: 'white'
-  }
 });

@@ -98,13 +98,13 @@ const styles = StyleSheet.create({
 const DARK_THEME = StyleSheet.create({
   tabBar: {
     backgroundColor: '#2C2C2C',
-    color: 'white',
+    text: 'white',
   }
 });
 
 const LIGHT_THEME = StyleSheet.create({
   tabBar: {
     backgroundColor: '#FFF',
-    color: 'black',
+    text: 'black',
   }
 });

@@ -27,7 +27,7 @@ export const LoginComponent = ({
         source={ require('../../assets/images/user.jpg') }
         resizeMode={ 'cover' }
       />
-      <Text style={ styles.color }>{t('translation.loginScreen.signIn')}</Text>
+      <Text style={ styles.text }>{t('translation.loginScreen.signIn')}</Text>
       <LoginInput
         image={ t('translation.loginScreen.username') }
         textHandler={ loginHandler }
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     borderRadius: 70,
     marginBottom: 20,
   },
-  color: {
+  text: {
     fontSize: 32,
     fontFamily: 'PT Sans',
     marginBottom: 20,

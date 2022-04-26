@@ -3,11 +3,12 @@ import { Image, StyleSheet, View } from 'react-native';
 import { InfoBox } from './infoBox/infoBox';
 import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react';
+import { tasksStore } from '../../mobx/store';
 export const AboutComponent = observer(() => {
   const { t } = useTranslation();
   return (
 
-    <View style={ styles.container }>
+    <View style={ [ styles.container, { backgroundColor: tasksStore.theme?.backgroundColor } ] }>
       <Image
         style={ styles.image }
         source={ require('../../assets/images/company.jpg') }
@@ -47,6 +48,6 @@ const DARK_THEME = StyleSheet.create({
 
 const LIGHT_THEME = StyleSheet.create({
   container: {
-    backgroundColor: '#F1F1F1',
+    backgroundColor: '#d8d9da',
   }
 });

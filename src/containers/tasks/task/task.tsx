@@ -16,13 +16,13 @@ interface TaskProps {
 export const Task = ({ task, checkboxHandler, deleteTask, updateTextOfTask }: TaskProps) => {
   const { t } = useTranslation();
   return (
-    <View style={ styles.input }>
+    <View style={ [ styles.input, { backgroundColor: tasksStore.theme?.secondaryColor } ] }>
       <BouncyCheckbox
         iconStyle={{ borderColor: '#40e6cf' }}
         fillColor={'#40e6cf'}
         onPress={ (isChecked: boolean) => checkboxHandler(isChecked) }
       />
-      <TextInput style={ styles.taskText }
+      <TextInput style={ [ styles.taskText, { color: tasksStore.theme?.color } ] }
         value={task.text}
         onChangeText={(text) => updateTextOfTask(text, task._id)} />
       <CustomizedButton
@@ -53,22 +53,4 @@ const styles = StyleSheet.create({
     flex: 5,
     flexWrap: 'nowrap',
   },
-});
-
-const LIGHT_THEME = StyleSheet.create({
-  input: {
-    backgroundColor: 'white',
-  },
-  taskText: {
-    color: 'black'
-  }
-});
-
-const DARK_THEME = StyleSheet.create({
-  input: {
-    backgroundColor: '#2E2E2E',
-  },
-  taskText: {
-    color: 'white'
-  }
 });

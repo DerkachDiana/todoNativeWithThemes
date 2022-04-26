@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
+import { tasksStore } from '../mobx/store';
 
 interface CustomizedButtonProps {
   onPressFunction: () => void;
@@ -19,8 +20,8 @@ export const CustomizedButton = ({
   stylesProps,
 }: CustomizedButtonProps) => {
   return (
-    <TouchableOpacity style={[ stylesProps, styles.button ]} onPress={() => onPressFunction()}>
-      <Text style={styles.buttonText}>{text}</Text>
+    <TouchableOpacity style={[ stylesProps, styles.button, { backgroundColor: tasksStore.theme?.buttonColor } ]} onPress={() => onPressFunction()}>
+      <Text style={[ styles.buttonText, { color: tasksStore.theme?.buttonTextColor } ]}>{text}</Text>
     </TouchableOpacity>
   );
 };
@@ -29,7 +30,6 @@ const styles = StyleSheet.create({
   button: {
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: '#40e6cf',
     borderRadius: 5,
   },
   buttonText: {

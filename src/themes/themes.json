@@ -1,0 +1,26 @@
+[
+  {
+    "key": "LIGHT",
+    "backgroundColor": "#efefef",
+    "secondaryColor": "white",
+    "buttonColor": "#40e6cf",
+    "buttonTextColor": "black",
+    "color": "black"
+  },
+  {
+    "key": "DARK",
+    "backgroundColor": "black",
+    "secondaryColor": "#313131",
+    "buttonColor": "#7bd9c3",
+    "buttonTextColor": "black",
+    "color": "#ececec"
+  },
+  {
+    "key": "YELLOW",
+    "backgroundColor": "#E1D7A8FF",
+    "secondaryColor": "#f3ebca",
+    "buttonColor": "#a8b2e1",
+    "buttonTextColor": "black",
+    "color": "black"
+  }
+]

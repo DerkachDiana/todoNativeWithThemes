@@ -1,3 +1,8 @@
 export type ThemeType = {
-  light: boolean,
+  key: string,
+  backgroundColor: string,
+  secondaryColor: string,
+  buttonColor: string,
+  buttonTextColor: string,
+  color: string,
 }

@@ -1,19 +1,23 @@
 import { action, makeObservable, observable } from 'mobx';
 import { TaskType } from '../types/Task';
 import { ThemeType } from '../types/Theme';
+import THEMES from '../themes/themes.json';
 
 export class TasksStore {
   tasks: TaskType[] = [];
-  theme: ThemeType = { light: true };
+  theme: ThemeType | undefined = THEMES[0];
+  themeKey: string = 'LIGHT';
 
   constructor() {
     makeObservable(this, {
       tasks: observable,
       theme: observable,
+      themeKey: observable,
       addTask: action,
       deleteTask: action,
       updateTask: action,
       changeTheme: action,
+      changeThemeKey: action,
 
     });
   }
@@ -38,7 +42,10 @@ export class TasksStore {
     });
   }
   changeTheme() {
-    this.theme.light = !this.theme.light;
+    this.theme = THEMES.find(theme => theme.key === this.themeKey);
+  }
+  changeThemeKey(key: string) {
+    this.themeKey = key;
   }
 }
 export const tasksStore = new TasksStore();

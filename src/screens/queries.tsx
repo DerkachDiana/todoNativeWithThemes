@@ -19,16 +19,35 @@ export const Queries = observer(() => {
     }
   }, [ data ]);
   return (
-    <View style={ styles.container }>
+    <View style={ [ styles.container, { backgroundColor: tasksStore.theme?.backgroundColor } ] }>
       <View>
         <FlatList data={users} renderItem={({ item }) => (
           <Text>{item.username} {item.age}</Text>
         )}
         />
         <CustomizedButton
-          text={'Change theme'}
+          text={'Light theme'}
           stylesProps={styles.button}
-          onPressFunction={ () => tasksStore.changeTheme() }
+          onPressFunction={ () => {
+            tasksStore.changeThemeKey('LIGHT');
+            tasksStore.changeTheme();
+          } }
+        />
+        <CustomizedButton
+          text={'Dark theme'}
+          stylesProps={styles.button}
+          onPressFunction={ () => {
+            tasksStore.changeThemeKey('DARK');
+            tasksStore.changeTheme();
+          } }
+        />
+        <CustomizedButton
+          text={'Yellow theme'}
+          stylesProps={styles.button}
+          onPressFunction={ () => {
+            tasksStore.changeThemeKey('YELLOW');
+            tasksStore.changeTheme();
+          } }
         />
       </View>
     </View>
@@ -46,8 +65,7 @@ const styles = StyleSheet.create({
   button: {
     marginBottom: 10,
     padding: 15,
-    color: 'black',
-    backgroundColor: '#40e6cf'
+    text: 'black',
   }
 });
 
