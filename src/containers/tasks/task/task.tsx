@@ -18,8 +18,8 @@ export const Task = ({ task, checkboxHandler, deleteTask, updateTextOfTask }: Ta
   return (
     <View style={ [ styles.input, { backgroundColor: tasksStore.theme?.secondaryColor } ] }>
       <BouncyCheckbox
-        iconStyle={{ borderColor: '#40e6cf' }}
-        fillColor={'#40e6cf'}
+        iconStyle={{ borderColor: tasksStore.theme?.buttonColor }}
+        fillColor={tasksStore.theme?.buttonColor}
         onPress={ (isChecked: boolean) => checkboxHandler(isChecked) }
       />
       <TextInput style={ [ styles.taskText, { color: tasksStore.theme?.color } ] }

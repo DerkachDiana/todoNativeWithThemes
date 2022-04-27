@@ -21,10 +21,10 @@ export const Tabs = observer(() => {
   const icons = {
     tasksWhite: require('../assets/icons/tasksWhite.png'),
     aboutWhite: require('../assets/icons/aboutWhite.png'),
-    graphQlWhite: require('../assets/icons/aboutWhite.png'),
+    graphQlWhite: require('../assets/icons/whiteLock.png'),
     tasksBlack: require('../assets/icons/tasksBlack.png'),
     aboutBlack: require('../assets/icons/aboutBlack.png'),
-    graphQlBlack: require('../assets/icons/aboutBlack.png'),
+    graphQlBlack: require('../assets/icons/lock.png'),
   };
   return (
     <ApolloProvider client={client}>
@@ -35,7 +35,7 @@ export const Tabs = observer(() => {
           screenOptions={{
             tabBarHideOnKeyboard: true,
             headerShown: false,
-            tabBarStyle: tasksStore.theme.light ? LIGHT_THEME.tabBar : DARK_THEME.tabBar,
+            tabBarStyle: { backgroundColor: tasksStore.theme?.buttonColor },
           }} >
           <Tab.Screen
             name={ 'TaskList' }
@@ -44,7 +44,7 @@ export const Tabs = observer(() => {
               tabBarLabel: t('translation.tab.tasks'),
               tabBarIcon: () => (
                 <Image
-                  source={tasksStore.theme.light ? icons.tasksBlack : icons.tasksWhite}
+                  source={ tasksStore.themeKey === 'LIGHT' ? icons.tasksBlack : icons.tasksWhite }
                   style={ styles.icons }
                 />
               ),
@@ -57,7 +57,7 @@ export const Tabs = observer(() => {
               tabBarLabel: t('translation.tab.about'),
               tabBarIcon: () => (
                 <Image
-                  source={ tasksStore.theme.light ? icons.aboutBlack : icons.aboutWhite }
+                  source={ tasksStore.themeKey === 'LIGHT' ? icons.aboutBlack : icons.aboutWhite }
                   style={ styles.icons }
                 />
               ),
@@ -67,11 +67,10 @@ export const Tabs = observer(() => {
             name={ 'GraphQL' }
             component={ Queries }
             options={{
-              tabBarLabel: 'GraphQL',
+              tabBarLabel: 'Settings',
               tabBarIcon: () => (
                 <Image
-                  source={ tasksStore.theme.light ? icons.graphQlBlack : icons.graphQlWhite }
-                  // source={ icons.graphQlBlack }
+                  source={ tasksStore.themeKey === 'LIGHT' ? icons.graphQlBlack : icons.graphQlWhite }
                   style={ styles.icons }
                 />
               )
@@ -93,18 +92,4 @@ const styles = StyleSheet.create({
     width: 25,
     height: 25,
   },
-});
-
-const DARK_THEME = StyleSheet.create({
-  tabBar: {
-    backgroundColor: '#2C2C2C',
-    text: 'white',
-  }
-});
-
-const LIGHT_THEME = StyleSheet.create({
-  tabBar: {
-    backgroundColor: '#FFF',
-    text: 'black',
-  }
 });

@@ -68,15 +68,3 @@ const styles = StyleSheet.create({
     text: 'black',
   }
 });
-
-const DARK_THEME = StyleSheet.create({
-  container: {
-    backgroundColor: '#1C1C1C',
-  },
-});
-
-const LIGHT_THEME = StyleSheet.create({
-  container: {
-    backgroundColor: '#F1F1F1',
-  }
-});
